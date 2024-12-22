@@ -1,11 +1,12 @@
 (function () {
   'use strict';
 
-  // polyfill
+  // Polyfill pre hladký scroll
   function polyfill() {
     var w = window;
     var d = document;
 
+    // Skontroluje, či je podporovaná vlastnosť scrollBehavior
     if (
       'scrollBehavior' in d.documentElement.style &&
       w.__forceSmoothScrollPolyfill__ !== true
@@ -141,6 +142,7 @@
       });
     }
 
+    // Overriden scroll metódy pre všetky zariadenia
     w.scroll = w.scrollTo = function() {
       if (arguments[0] === undefined) {
         return;
@@ -203,6 +205,7 @@
       );
     };
 
+    // Upravené metódy pre scrollovanie na prvkoch
     Element.prototype.scroll = Element.prototype.scrollTo = function() {
       if (arguments[0] === undefined) {
         return;
